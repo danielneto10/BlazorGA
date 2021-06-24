@@ -1,0 +1,22 @@
+﻿<h3 style="padding-top: 2em">Resultado</h3>
+@if (Fitness > 1)
+{
+    <h1>Palavra: @Palavra</h1>
+    <h1>Gerações: @Geracoes</h1>
+    <h1>Fitness: @Fitness.ToString("n2")%</h1>
+    if (Fitness < 100)
+    {
+        <h1>Não achou uma solução</h1>
+    }
+}
+else if (Fitness == 0)
+{
+    <h1>Desembaralhando...</h1>
+    <img src="imagens/carregando.gif" />
+}
+
+@code {
+    [Parameter] public string Palavra { get; set; }
+    [Parameter] public int Geracoes { get; set; }
+    [Parameter] public float Fitness { get; set; }
+}

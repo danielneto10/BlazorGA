@@ -1,0 +1,38 @@
+﻿@page "/ga"
+
+<h2>Desembaralhar palavras</h2>
+<div class="container-fluid">
+    <div class="row">
+        <input type="text" readonly style="margin: 5px 5px 5px 5px" value="@PalavraEmbaralhada" />
+        <button class="btn-primary" style="margin: 5px 5px 5px 5px" @onclick="EmbaralharPalavra">Gerar Palavra</button>
+    </div>
+    <div class="row" style="padding-top: 5em">
+        <div class="col-sm">
+            <b>Gerações</b>
+            <input type="number" min="0" class="form-control-sm" style="width: 100px" @bind="Geracoes"/>
+        </div>
+        <div class="col-sm">
+            <b>População</b>
+            <input type="number" min="0" class="form-control-sm" style="width: 100px" @bind="Populacao"/>
+        </div>
+        <div class="col-sm">
+            <b>Seleção</b>
+            <select class="form-control-sm" style="width: 100px" @bind="Selecao">
+                <option value="Elite">Elite</option>
+                <option value="Roleta">Roleta</option>
+                <option value="Torneio">Torneio</option>
+            </select>
+        </div>
+        <div class="col-sm">
+            <b>CrossOver Chance</b>
+            <input type="number" min="0" max="1" step="0.01" class="form-control-sm" style="width: 100px" @bind="CrossOverChance"/>
+        </div>
+        <div class="col-sm">
+            <b>Mutação Chance</b>
+            <input type="number" min="0" max="1" step="0.01" class="form-control-sm" style="width: 100px" @bind="MutacaoChance"/>
+        </div>
+    </div>
+    <button class="btn btn-success btn-lg btn-block" style="margin-top: 20px" @onclick="SolverGA">Desembaralhar Palavra</button>
+
+    <ResultadoGA Palavra="@Palavra" Geracoes="@geracaoResultado" Fitness="@melhorFitness"/>
+</div>
